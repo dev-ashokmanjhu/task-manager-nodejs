@@ -19,10 +19,11 @@ router.post("/users/login", async (req, res) => {
       req.body.email,
       req.body.password
     );
+
     const token = await user.generateAuthToken();
     res.send({ user, token });
   } catch (error) {
-    res.status(404).json(error);
+    res.status(404).json({ error: "Paasword and Email is Incorrect" });
   }
 });
 router.post("/users/logout", auth, async (req, res) => {

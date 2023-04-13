@@ -52,8 +52,9 @@ router.delete("/task/:id", auth, async (req, res) => {
     });
     if (!task) {
       res.status(404).send("Task not Found");
+    } else {
+      res.status(200).send(task);
     }
-    res.status(200).send(task);
   } catch (error) {
     res.status(404).send(error);
   }
