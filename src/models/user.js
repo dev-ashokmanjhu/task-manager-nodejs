@@ -6,12 +6,16 @@ const Task = require("./task");
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true,
+    required: [true, "Name is Required 🙁"],
   },
-  email: { type: String, required: true, unique: true },
+  email: {
+    type: String,
+    unique: [true, "Email is Already Taken"],
+    required: [true, "Email is Required 🙁"],
+  },
   password: {
     type: String,
-    required: true,
+    required: [true, "Password Must Be There 🙁"],
     minlength: 6,
     max: 14,
     trim: true,
