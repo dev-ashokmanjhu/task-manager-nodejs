@@ -2,7 +2,7 @@ const Task = require("../models/task");
 
 exports.getAllTaskHandler = async (req, res) => {
   try {
-    const tasks = await Task.find({});
+    const tasks = await Task.find(req.query);
     await req.user.populate("tasks").execPopulate();
     res.send(req.user.tasks);
   } catch (error) {
